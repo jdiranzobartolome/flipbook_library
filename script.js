@@ -1,5 +1,6 @@
 
 const flipbook_container = document.getElementById('flipbook-container');
+
 const HTML_page_1 = `<div class="content">
                                 <h1>Las aventuras de la selva</h1>
                                 <h4>by</h4>

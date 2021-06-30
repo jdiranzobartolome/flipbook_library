@@ -1,11 +1,3 @@
-// TO-DO! SOLVING THE DRAG PROBLE AND SOME OTHER ISSUES. 
-
-// WARNING: THIS PROGRAM WILL MAKE EVERYTHING ON THE PAGE NOT DRAGGABLE.
-// CREATE A PARAMETER FOR MAKING THE WHOLE PAGE NOT DRAGGABLE OR NOT. 
-// IF THE USER DECIDES TO NOT MAKE IT, HE/SHE IS RESPONSIBLE FOR MAKING THE USRROUNDINGS OF 
-// THE BOOK AND THE BOOK ITSELF (IT IS ENOUFH WITH MAKING NOT DRAGGABLE ANY PARENT OF THE BOOK)
-// NOT TRAGGABLE. OTHERWISE MISTAKES ARISE SOMETIMES WHEN PERFORMING THE MOUSEDOWN AND MOVE ACTIONS. 
-
 const flipbook = (() => {
     ///////////////////////
     // scoped CSS styling 
@@ -252,11 +244,6 @@ const flipbook = (() => {
             //e.target indicates the element in which the event occured and that could actually 
             // be one of the descendants (in this case, using e.target just gives the pages of the 
             // book).
-            // DOUBT: IS IT BETTER TO USE "GLOBAL VARIABLES" OR TO NOT USE THEM AND HAVE, 
-            // CONSTANTLY, THE FLIPPER BEING CREATED AND DESTROYED WITH e.currentTarget?
-            // THIS EVENT IS CONSTANTLY BEING TRIGGERED, SO I GUESS USIGN SCOPED GLOBAL VARIABLE
-            // WILL BE BETTER. SAME FOR THE REST OF VARIABLES. WHEN IS IT BETTER TO USE GLOBAL OR
-            // NOT?
             //flipper = E.currentTarget;
             thisX = e.pageX - flipbook_container.getBoundingClientRect().x - flipper.offsetLeft;
             flippingLogic();
@@ -358,11 +345,7 @@ const flipbook = (() => {
                 flipping_rest = false;
                 flipper.addEventListener('mousemove', flipperListener);
             }, 1000);
-        }
-
-        // You could use this initialization for cancelling (instead of feeding the updatePafeFlipping with 
-        // the harcored extreme values, that is useless). Just leave it like this so maybe in the future, 
-        // you can hardcore the values and make the page go slowly to that harcored value. 
+        } 
 
         function initializeNoFlippingState() {
             //All pages Zindex is 1 except for the only two pages that are visible.
@@ -386,10 +369,7 @@ const flipbook = (() => {
             left_pages[left_pages.length - 1].style.zIndex = '2';
             right_pages[0].style.zIndex = '2';
         }
-    
-        //@TO-DO
-        // ADD ALSO GENERAL EXPLANATION TO EACH FUNCTION, OUTSIDE OF IT, WITH 
-        // ALSO TO-DOs, NAME...ETC, TPO LO QUE HACE TRAVERSY MEDIA.  
+     
         function initializePageFlippingState(right_flip) {
             
             // Reset all zIndex.
@@ -453,7 +433,6 @@ const flipbook = (() => {
             
         }
         
-        // @TO-DO: FIND OUT HOW TO PROPERLY GET THE REAL HEIGHT, WITHOUT PADDING AND MARGIN
         // Even though it is global we need the thisX parameter because the cancelling and finalizing functions
         // send the thisX value hardcoded. 
         function updatePageFlip(right_flip, x) {
